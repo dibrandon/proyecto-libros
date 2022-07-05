@@ -3,7 +3,7 @@
 // aqui insertaremos la data a la BD
 // los seeds no se conectan con nuestro servidor
 
-const Autor = require("../models/autor.model");
+const Autor = require("../models/Autor.model");
 
 // insertarla en la BD
 const mongoose = require("mongoose");

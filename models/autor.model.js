@@ -1,22 +1,11 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const Schema = mongoose.Schema;
 
-const autorSchema = Schema({
-  _id: Schema.Types.ObjectId,
-  name: String,
-  deathDate: Number,
-  books: [{ type: Schema.Types.ObjectId, ref: 'Story' }]
-});
+const authorSchema = new Schema({
+    name: String,
+    deathDate: Number,
+    books: [{ type: Schema.Types.ObjectId, ref: 'Book' }]
+})
 
-const booksSchema = Schema({
-  author: { type: Schema.Types.ObjectId, ref: 'Autor' },
-  title: String,
-});
-
-const Story = mongoose.model('Book', booksSchema);
-const Person = mongoose.model('Autor', autorSchema);
-
-module.exports = Autor;
-module.exports = Book;
-
-  //fans: [{ type: Schema.Types.ObjectId, ref: 'Person' }]
+const Author = mongoose.model('Author', authorSchema);
+module.exports = Author;
