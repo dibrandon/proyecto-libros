@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const authorSchema = new Schema({
     name: String,
     deathDate: Number,
+    selfieUrl: String,
     books: [{ type: Schema.Types.ObjectId, ref: 'Book' }]
 })
 

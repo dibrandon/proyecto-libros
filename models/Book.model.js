@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bookSchema = new Schema({
     name: String,
     url: String,
-    portrait: String,
+    portraitUrl: String,
     intro: String,
     author: [{ type: Schema.Types.ObjectId, ref: 'Author' }]
 
