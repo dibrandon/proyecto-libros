@@ -1,3 +1,5 @@
+
+
 // aqui insertaremos la data a la BD
 // los seeds no se conectan con nuestro servidor
 
