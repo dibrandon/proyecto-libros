@@ -26,9 +26,29 @@ router.get("/upload", (req, res, next) => {
   res.render("uploadForm");
 });
 
+router.post("/upload", (req, res, next) => {
+  const name = req.body.name
+  const author = req.body.author
+  const idiom = req.body.idiom
+  const url = req.body.url
+  const imgUrl = req.body.imgUrl
+
+  Books.create({
+    name:name,
+    author:author,
+    idiom:idiom,
+    url:url,
+    imgUrl:imgUrl
+  }).then((newBook)=>{
+    res.redirect("explore")
+  }).catch((e)=>console.log(e))
+} );
+
+
 
 
 // router.get("/profile", (req, res, next) => {
 //   res.render("profile.hbs");
 // });
 module.exports = router;
+
