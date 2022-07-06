@@ -1,15 +1,14 @@
-body {
-  padding: 50px;
+/* body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+} */
 
-a {
+/* a {
   color: #00b7ff;
-}
-
+} */
+/* 
 h1 {
   color: 15px;
-}
+} */
 
 .container-wrap
   {
@@ -25,7 +24,7 @@ h1 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     align-content: stretch;
   }
@@ -35,10 +34,11 @@ h1 {
   }
 .container-wrapV3
   {
+    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: baseline;
-    align-content: flex-start;
+    justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
   }
