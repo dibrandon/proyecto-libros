@@ -13,7 +13,7 @@ const Book = require("../models/Book.model");
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://localhost:27017/book")
+  .connect("mongodb://localhost:27017/freebooks-app")
   .then((response) => {
     console.log("conectados a la Dase de Datos");
 

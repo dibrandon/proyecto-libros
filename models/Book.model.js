@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-let esquema= mongoose.Schema;
-const bookSchema = new esquema({
+const Schema = mongoose.Schema;
+
+const bookSchema = new Schema({
     name: String,
     author: String,
     idiom: String,
@@ -8,9 +9,6 @@ const bookSchema = new esquema({
 
 })
 
-const Books = mongoose.model('book', bookSchema);
+const booksModel = mongoose.model('Book', bookSchema);
 
-module.exports = Books;
-
- // portraitUrl: String,
-   // intro: String,
+module.exports = booksModel;  
