@@ -10,3 +10,35 @@ a {
 h1 {
   color: 15px;
 }
+
+.container-wrap
+  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: stretch;
+  }
+.container-wrapV2
+  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
+  }
+
+  .imgWH {
+    height: 195px;
+  }
+.container-wrapV3
+  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: baseline;
+    align-content: flex-start;
+  }
