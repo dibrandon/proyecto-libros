@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const isLoggedIn = require("../middleware/isLoggedIn")
+const isLoggedOut = require("../middleware/isLoggedOut");
 const Books = require("../models/Book.model");
 const User = require("../models/User.model")
 const Recommended = require("../models/recommended.model")
@@ -8,8 +10,6 @@ const Recommended = require("../models/recommended.model")
 router.get("/", (req, res, next) => {
   res.render("index");
 });
-
-
 
 router.get("/explore", (req, res, next) => {
   Books.find()
@@ -22,7 +22,7 @@ router.get("/explore", (req, res, next) => {
     });
 });
 
-router.get("/upload", (req, res, next) => {
+router.get("/upload", isLoggedIn, (req, res, next) => {
   res.render("uploadForm");
 });
 
@@ -39,16 +39,18 @@ router.post("/upload", (req, res, next) => {
     idiom:idiom,
     url:url,
     imgUrl:imgUrl
-  }).then((newBook)=>{
+  })
+  .then((newBook)=>{
     res.redirect("explore")
-  }).catch((e)=>console.log(e))
+  })
+  .catch((e)=>console.log(e))
 } );
 
 
+router.get("/profile", isLoggedIn, (req, res, next) => {
+  res.render("profile");
+});
 
 
-// router.get("/profile", (req, res, next) => {
-//   res.render("profile.hbs");
-// });
 module.exports = router;
 
