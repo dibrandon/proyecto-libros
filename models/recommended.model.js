@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const bookSchema = new Schema({
+const recoSchema = new Schema({
     name: String,
     author: String,
     idiom: String,
@@ -10,6 +10,6 @@ const bookSchema = new Schema({
 
 })
 
-const booksModel = mongoose.model('Book', bookSchema);
+const recoModel = mongoose.model('Reco', recoSchema);
 
-module.exports = booksModel;  
+module.exports = recoModel;  

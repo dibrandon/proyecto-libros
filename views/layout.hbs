@@ -23,20 +23,30 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="/explore">Explorar</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Login
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
             <li><a class="dropdown-item" href="/registro">registroOk</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        
+            <li><a class="dropdown-item" href="/auth/login">Login</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                </li>
+                <li class="nav-item">
+          <a class="nav-link" href="auth/logout">Logout</a>
+        </li>
         </li>
                 <li class="nav-item">
+          <a class="nav-link" href="/auth/login">Login</a>
+        </li>
+
+          </ul>
+        </li>
+                {{!-- <li class="nav-item">
           <a class="nav-link" href="/auth/signup">Signup</a>
         </li>
                 </li>
@@ -46,12 +56,15 @@
         </li>
                 <li class="nav-item">
           <a class="nav-link" href="/auth/login">Login</a>
+        </li> --}}
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/signup">Registrarse</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      {{!-- <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> --}}
     </div>
   </div>
 </nav>
