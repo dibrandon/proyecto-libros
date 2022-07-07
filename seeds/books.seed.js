@@ -11,9 +11,9 @@ const Book = require("../models/Book.model");
 
 // insertarla en la BD
 const mongoose = require("mongoose");
-
+// mongodb://localhost:27017/freebooks-app
 mongoose
-  .connect("mongodb://localhost:27017/freebooks-app")
+  .connect("mongodb+srv://admin:adminadmin1234@cluster0.ngv8j.mongodb.net/?retryWrites=true&w=majority")
   .then((response) => {
     console.log("conectados a la Dase de Datos");
 

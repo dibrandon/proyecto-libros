@@ -32,13 +32,15 @@ router.post("/upload", (req, res, next) => {
   const idiom = req.body.idiom
   const url = req.body.url
   const imgUrl = req.body.imgUrl
+  const description = req.body.description
 
   Books.create({
     name: name,
     author: author,
     idiom: idiom,
     url: url,
-    imgUrl: imgUrl
+    imgUrl: imgUrl,
+    description:description,
   })
     .then((newBook) => {
       res.redirect("explore")
@@ -49,7 +51,7 @@ router.post("/upload", (req, res, next) => {
 
 router.get("/profile", isLoggedIn, (req, res, next) => {
   console.log(req.session.user._id)
-  User.findById(req.session.user._id)
+  User.findById(req.session.user._id).populate("favorites")
   .then((dataUser) => {
     console.log(dataUser)
     res.render("profile", { dataUser })
@@ -62,7 +64,59 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
   })
   
 });
+
+
   
+router.post("/add-favorite", isLoggedIn, (req, res) => {
+
+  const bookId = req.body._id
+ // const idToCheck = req.body.apiId;
+//console.log("favoritos")
+ Books.find({ _id: bookId })
+     .then(bookArray => {
+         //comprobar si ese Id ya esta en db favoritos(?)
+         if (bookArray.length === 0) {
+       
+
+             Books
+                 .create(newFav)
+                 .then(result => {
+                  console.log("@")
+                  console.log(req.user._id)
+                  console.log(result._id)
+                     User
+                         .findByIdAndUpdate(req.user._id, { $push: { favorites: result._id } })
+                         .then(() => {
+                             res.redirect("/profile")
+                         })
+                 })
+                 .catch(err => console.log(err))
+         } else {
+          // console.log("!!!",req.user._id)
+             User
+                 .findById(req.user._id)
+                 .then((user) => {
+                     if (!user.favorites.includes(bookArray[0]._id)) {
+                      console.log("ds")
+                      console.log(req.user._id)
+                      console.log(user._id)
+                         User
+                             .findByIdAndUpdate(req.user._id, { $push: { favorites: bookArray[0]._id } })
+                             .then(() => {
+                                 res.redirect("/profile")
+                             })
+                     } else { res.redirect("/profile") }
+                 })
+                 .catch((err) => {
+                     console.log(err)
+                 })
+
+
+
+         }
+     })
+})
+
 
 
 

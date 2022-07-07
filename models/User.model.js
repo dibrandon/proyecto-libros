@@ -8,7 +8,7 @@ const userSchema = new Schema(
        unique: true //-> Ideally, should be unique, but its up to you
     },
     password: String,
-    favorites: {type: Schema.Types.ObjectId, ref: "Book"}//aca metemos los libros!
+    favorites: [{type: Schema.Types.ObjectId, ref: "Book"}]//aca metemos los libros!
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
@@ -19,3 +19,5 @@ const userSchema = new Schema(
 const User = model("User", userSchema);
 
 module.exports = User;
+
+
