@@ -1,7 +1,25 @@
 
 <p>Bienvenido a tu perfil {{dataUser.username}}
-<p>test deploy</p>
-</p>
+<div class="container-wrapV3">
+    {{#each dataUser.favorites}}
+    <div class="card" style="width: 18rem;">
+        <img class="imgWH" src="{{imgUrl}}" />
+        <div class="card-body">
+            <h5 class="card-title">{{name}}</h5>
+            <p class="card-text">{{description}}</p>
+            <a href="{{url}}" target="_blank" class="btn btn-primary">Descargar</a>
+            <form action="/delete-favorite" method="POST">
+                <input type="hidden" name="name" value={{name}}>
+                <input type="hidden" name="author" value={{author}}>
+                <input type="hidden" name="idiom" value={{idiom}}>
+                <input type="hidden" name="url" value={{url}}>
+                <input type="hidden" name="imgUrl" value={{imgUrl}}>
+                <input type="hidden" name="description" value={{description}}>
+              <input type="hidden" name="id" value={{id}}> 
+                <button type="submit" class="btn btn-primary">Borrar Favorito</button>
+            </form>
+        </div>
+    </div>
 
-
-{{!-- {{username}} --}}
+    {{/each}}
+</div>

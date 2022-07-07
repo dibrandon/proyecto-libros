@@ -116,8 +116,14 @@ router.post("/add-favorite", isLoggedIn, (req, res) => {
          }
      })
 })
-
-
+router.post("/delete-favorite",isLoggedIn,(req,res)=>{
+  const {id} = req.body
+  User.findByIdAndUpdate(req.user._id,{$pull : {favorites : id}})
+  .then(()=>{
+      res.redirect("/profile")
+  })
+  .catch(err => console.log(err))
+})
 
 
 module.exports = router;
