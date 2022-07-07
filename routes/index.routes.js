@@ -34,22 +34,36 @@ router.post("/upload", (req, res, next) => {
   const imgUrl = req.body.imgUrl
 
   Books.create({
-    name:name,
-    author:author,
-    idiom:idiom,
-    url:url,
-    imgUrl:imgUrl
+    name: name,
+    author: author,
+    idiom: idiom,
+    url: url,
+    imgUrl: imgUrl
   })
-  .then((newBook)=>{
-    res.redirect("explore")
-  })
-  .catch((e)=>console.log(e))
-} );
+    .then((newBook) => {
+      res.redirect("explore")
+    })
+    .catch((e) => console.log(e))
+});
 
 
 router.get("/profile", isLoggedIn, (req, res, next) => {
-  res.render("profile");
+  console.log(req.session.user._id)
+  User.findById(req.session.user._id)
+  .then((dataUser) => {
+    console.log(dataUser)
+    res.render("profile", { dataUser })
+  
+  })
+  .catch((err) => {
+    
+
+    console.log(err) 
+  })
+  
 });
+  
+
 
 
 module.exports = router;

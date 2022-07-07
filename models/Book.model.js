@@ -6,7 +6,7 @@ const bookSchema = new Schema({
     author: String,
     idiom: String,
     url: String,
-    imgUrl: String
+    imgUrl: String,
 
 })
 
