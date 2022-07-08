@@ -9,6 +9,14 @@
 h1 {
   color: 15px;
 } */
+.almedio {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+}
 
 .container-wrap
   {
@@ -41,4 +49,8 @@ h1 {
     justify-content: space-around;
     align-items: center;
     align-content: stretch;
+  }
+
+  .head {
+    align-items: center;
   }
