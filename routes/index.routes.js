@@ -139,6 +139,20 @@ router.post("/delete-uploadedBooks",isLoggedIn,(req,res)=>{
   .catch(err => console.log(err))
 })
 
+router.get("/poke-search", (req, res, next) => {
+  console.log(req.query.name);
+
+  // debo buscar el pokemon del URL
+  Pokemon.findOne({ name: req.query.name })
+    .then((response) => {
+      console.log(response);
+      res.render("pokemon-search.hbs", { response });
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 // router.post("/delete-uploadedBooks/:id", (req, res, next) => {
 //   console.log("Llego aquí desde formulario");
 //   console.log(req.params);
