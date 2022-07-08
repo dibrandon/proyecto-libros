@@ -43,17 +43,24 @@ router.post("/upload", (req, res, next) => {
     description:description,
   })
     .then((newBook) => {
-      res.redirect("explore")
+      
+      User
+    .findByIdAndUpdate(req.session.user._id, { $push: { uploadedBooks: newBook._id } })
+
+      .then(() => {
+      res.redirect("/profile")
+    })
     })
     .catch((e) => console.log(e))
 });
 
 
 router.get("/profile", isLoggedIn, (req, res, next) => {
-  console.log(req.session.user._id)
-  User.findById(req.session.user._id).populate("favorites")
+  
+  User.findById(req.session.user._id).populate("favorites uploadedBooks")
+
   .then((dataUser) => {
-    console.log(dataUser)
+   
     res.render("profile", { dataUser })
   
   })

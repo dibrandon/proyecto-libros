@@ -1,6 +1,11 @@
 
-<p>Bienvenido a tu perfil {{dataUser.username}}
+
+
+       {{!-- {{dataUser.uploadedBooks}} --}}
+  <div class="container"><p>Bienvenido a tu perfil {{dataUser.username}} desde login
+    {{username}}
 <div class="container-wrapV3">
+ 
     {{#each dataUser.favorites}}
     <div class="card" style="width: 18rem;">
         <img class="imgWH" src="{{imgUrl}}" />
@@ -22,4 +27,5 @@
     </div>
 
     {{/each}}
-</div>
+</div></div>    
+

@@ -8,7 +8,8 @@ const userSchema = new Schema(
        unique: true //-> Ideally, should be unique, but its up to you
     },
     password: String,
-    favorites: [{type: Schema.Types.ObjectId, ref: "Book"}]//aca metemos los libros!
+    uploadedBooks: [{type: Schema.Types.ObjectId, ref: "Book"}],
+    favorites: [{type: Schema.Types.ObjectId, ref: "Book"}],//aca metemos los libros!
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
