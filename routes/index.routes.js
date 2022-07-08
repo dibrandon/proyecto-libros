@@ -83,8 +83,6 @@ router.post("/add-favorite", isLoggedIn, (req, res) => {
      .then(bookArray => {
          //comprobar si ese Id ya esta en db favoritos(?)
          if (bookArray.length === 0) {
-       
-
              Books
                  .create(newFav)
                  .then(result => {
@@ -99,7 +97,6 @@ router.post("/add-favorite", isLoggedIn, (req, res) => {
                  })
                  .catch(err => console.log(err))
          } else {
-          // console.log("!!!",req.user._id)
              User
                  .findById(req.user._id)
                  .then((user) => {
@@ -128,6 +125,15 @@ router.post("/delete-favorite",isLoggedIn,(req,res)=>{
   User.findByIdAndUpdate(req.user._id,{$pull : {favorites : id}})
   .then(()=>{
       res.redirect("/profile")
+  })
+  .catch(err => console.log(err))
+})
+
+router.post("/delete-uploadedBooks",isLoggedIn,(req,res)=>{
+  const {id} = req.body
+  User.findByIdAndUpdate(req.user._id,{$pull : {uploadedBooks : id}})
+  .then(()=>{
+      res.redirect("/explore")
   })
   .catch(err => console.log(err))
 })

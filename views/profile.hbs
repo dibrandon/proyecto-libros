@@ -1,9 +1,39 @@
+<div class="container">
+<table class="table table-hover table-responsive caption-top">
+    <caption>Tus libros subidos a la plataforma: </caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Libro</th>
+      <th scope="col">Autor</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>{{#each dataUser.uploadedBooks}}
+      <th scope="row"></th>
+      <td>{{name}}</td>
+      <td>{{author}}</td>
+      <td>sadf</td>
+    </tr><a href=""></a>
+      {{/each}}
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
-
-
-       {{!-- {{dataUser.uploadedBooks}} --}}
-  <div class="container"><p>Bienvenido a tu perfil {{dataUser.username}} desde login
-    {{username}}
+      <p> {{dataUser.favorites}}</p>
+  <div class="container"><p>Bienvenido a tu perfil {{dataUser.username}} 
 <div class="container-wrapV3">
  
     {{#each dataUser.favorites}}
@@ -22,6 +52,33 @@
                 <input type="hidden" name="description" value={{description}}>
               <input type="hidden" name="id" value={{id}}> 
                 <button type="submit" class="btn btn-primary">Borrar Favorito</button>
+            </form>
+        </div>
+    </div>
+
+    {{/each}}
+</div></div>    
+
+
+  <div class="container"><p>tus libros subidos {{dataUser.username}} 
+<div class="container-wrapV3">
+ 
+    {{#each dataUser.uploadedBooks}}
+    <div class="card" style="width: 18rem;">
+        <img class="imgWH" src="{{imgUrl}}" />
+        <div class="card-body">
+            <h5 class="card-title">{{name}}</h5>
+            <p class="card-text">{{description}}</p>
+            <a href="{{url}}" target="_blank" class="btn btn-primary">Descargar</a>
+            <form action="/delete-uploadedBooks" method="POST">
+                <input type="hidden" name="name" value={{name}}>
+                <input type="hidden" name="author" value={{author}}>
+                <input type="hidden" name="idiom" value={{idiom}}>
+                <input type="hidden" name="url" value={{url}}>
+                <input type="hidden" name="imgUrl" value={{imgUrl}}>
+                <input type="hidden" name="description" value={{description}}>
+              <input type="hidden" name="id" value={{id}}> 
+                <button type="submit" class="btn btn-primary">Borrar Libro</button>
             </form>
         </div>
     </div>
