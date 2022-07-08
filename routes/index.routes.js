@@ -129,6 +129,7 @@ router.post("/delete-favorite",isLoggedIn,(req,res)=>{
   .catch(err => console.log(err))
 })
 
+
 router.post("/delete-uploadedBooks",isLoggedIn,(req,res)=>{
   const {id} = req.body
   User.findByIdAndUpdate(req.user._id,{$pull : {uploadedBooks : id}})
@@ -138,6 +139,16 @@ router.post("/delete-uploadedBooks",isLoggedIn,(req,res)=>{
   .catch(err => console.log(err))
 })
 
-
+// router.post("/delete-uploadedBooks/:id", (req, res, next) => {
+//   console.log("Llego aquí desde formulario");
+//   console.log(req.params);
+//   Books
+//     .deleteOne({id:req.params.id})
+//     .then(response=>{
+//       console.log("Eliminado correctamente")
+//       res.redirect("/profile")
+//     })
+//     .catch(e=>console.log(e))
+// });
 module.exports = router;
 
